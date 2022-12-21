@@ -3,7 +3,11 @@ import { SlashCommandPartial, SlashCommandOptionType } from "./deps.ts";
 
 export const commands: SlashCommandPartial[] = [
     {
-        name: "helloworld",
-        description: "Hello, world!"
+        name: "ping",
+        description: "Pong!"
+    },
+    {
+        name: "serverstatus",
+        description: "Display Deeeep.io server status"
     }
 ];
