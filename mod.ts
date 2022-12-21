@@ -5,7 +5,8 @@ import {
     event,
     Interaction,
     Message,
-    InteractionResponseType
+    InteractionResponseType,
+subcommand
 } from "./deps.ts";
 import { commands } from "./commands.ts";
 import { GUILD_ID, DISCORD_TOKEN } from "./config.ts";
@@ -82,7 +83,7 @@ ${CONSTANTS.GAMEMODES[(String(serverStatus.hosts[i]!.gamemode) as CONSTANTS_GAME
 ${CONSTANTS.GAMEMODES[(String(serverStatus.customHosts[i]!.gamemode) as CONSTANTS_GAMEMODES_TYPE)]} - ${serverStatus.customHosts[i].server.region} - ${serverStatus.customHosts[i].id} - ${serverStatus.customHosts[i].map.string_id} - ${serverStatus.customHosts[i].users} players
             `;
         }
-        
+
         i.respond({
             content: `
 **Deeeep.io Server Status**
@@ -98,6 +99,14 @@ ${regularServerList}
 ${customServerList}
 \`\`\`
 `
+        });
+    }
+
+    @slash()
+    refreshhosts(i: Interaction) {
+        serverStatus.refreshHosts();
+        i.respond({
+            content: "All hosts refreshed."
         });
     }
 }

@@ -9,5 +9,9 @@ export const commands: SlashCommandPartial[] = [
     {
         name: "serverstatus",
         description: "Display Deeeep.io server status"
+    },
+    {
+        name: "refreshhosts",
+        description: "Refresh /serverstatus hosts",
     }
 ];
