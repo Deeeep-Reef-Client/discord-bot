@@ -82,11 +82,11 @@ ${CONSTANTS.GAMEMODES[(String(serverStatus.hosts[i]!.gamemode) as CONSTANTS_GAME
 ${CONSTANTS.GAMEMODES[(String(serverStatus.customHosts[i]!.gamemode) as CONSTANTS_GAMEMODES_TYPE)]} - ${serverStatus.customHosts[i].server.region} - ${serverStatus.customHosts[i].id} - ${serverStatus.customHosts[i].map.string_id} - ${serverStatus.customHosts[i].users} players
             `;
         }
-
+        
         i.respond({
             content: `
 **Deeeep.io Server Status**
-(Last refreshed at ${serverStatus.refreshedDate.getUTCHours()}:${serverStatus.refreshedDate.getUTCMinutes()}:${serverStatus.refreshedDate.getUTCSeconds()} UTC)
+(Last refreshed at <t:${Math.round(serverStatus.refreshedDate.getTime() / 1000)}:R>)
 
 **Regular Servers**
 \`\`\`yaml
