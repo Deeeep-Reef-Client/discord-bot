@@ -1,4 +1,3 @@
-// bot.ts
 import {
     Client,
     Intents,
@@ -10,14 +9,7 @@ import {
 } from "./deps.ts";
 import { commands } from "./commands.ts";
 import { GUILD_ID, DISCORD_TOKEN } from "./config.ts";
-
-const DEEEEP_API_URL = "https://apibeta.deeeep.io";
-const GAMEMODES = {
-    "1": "FFA",
-    "2": "PD",
-    "5": "1v1",
-    "6": "TFFA"
-};
+import CONSTANTS, {CONSTANTS_GAMEMODES_TYPE} from "./constants.ts";
 
 let serverStatusRefreshedDate = new Date();
 
@@ -26,13 +18,13 @@ let customHosts: any = {};
 let regions: any = {};
 
 async function refreshHosts() {
-    hosts = await fetch(DEEEEP_API_URL + "/hosts?servers=1")
+    hosts = await fetch(CONSTANTS.DEEEEP_API_URL + "/hosts?servers=1")
         .then(res => res.json());
 
-    customHosts = await fetch(DEEEEP_API_URL + "/hosts?custom=1&servers=1")
+    customHosts = await fetch(CONSTANTS.DEEEEP_API_URL + "/hosts?custom=1&servers=1")
         .then(res => res.json());
 
-    regions = await fetch(DEEEEP_API_URL + "/regions")
+    regions = await fetch(CONSTANTS.DEEEEP_API_URL + "/regions")
         .then(res => res.json());
 
     hosts = hosts.hosts;
@@ -73,13 +65,13 @@ class TagBot extends Client {
 
         for (const i in hosts) {
             regularServerList += `
-${GAMEMODES[(String(hosts[i]!.gamemode) as (keyof typeof GAMEMODES))]} - ${hosts[i].server.region} - ${hosts[i].id} - ${hosts[i].map.string_id} - ${hosts[i].users} players
+${CONSTANTS.GAMEMODES[(String(hosts[i]!.gamemode) as CONSTANTS_GAMEMODES_TYPE)]} - ${hosts[i].server.region} - ${hosts[i].id} - ${hosts[i].map.string_id} - ${hosts[i].users} players
             `;
         }
 
         for (const i in customHosts) {
             customServerList += `
-${GAMEMODES[(String(customHosts[i]!.gamemode) as (keyof typeof GAMEMODES))]} - ${customHosts[i].server.region} - ${customHosts[i].id} - ${customHosts[i].map.string_id} - ${hosts[i].users} players
+${CONSTANTS.GAMEMODES[(String(customHosts[i]!.gamemode) as CONSTANTS_GAMEMODES_TYPE)]} - ${customHosts[i].server.region} - ${customHosts[i].id} - ${customHosts[i].map.string_id} - ${hosts[i].users} players
             `;
         }
 
