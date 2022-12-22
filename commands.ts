@@ -12,6 +12,6 @@ export const commands: SlashCommandPartial[] = [
     },
     {
         name: "refreshhosts",
-        description: "Refresh /serverstatus hosts",
+        description: "Force refresh /serverstatus hosts",
     }
 ];
