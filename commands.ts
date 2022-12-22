@@ -13,5 +13,9 @@ export const commands: SlashCommandPartial[] = [
     {
         name: "refreshhosts",
         description: "Force refresh /serverstatus hosts",
+    },
+    {
+        name: "download",
+        description: "Download Deeeep.io Reef Client"
     }
 ];

@@ -109,6 +109,13 @@ ${customServerList}
             content: "All hosts refreshed."
         });
     }
+
+    @slash()
+    download(i: Interaction) {
+        i.respond({
+            content: "Download the client\nhttps://deeeep-reef-client.netlify.app/downloads/latest/"
+        });
+    }
 }
 
 const client = new TagBot();
