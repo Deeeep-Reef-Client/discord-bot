@@ -12,10 +12,22 @@ export const commands: SlashCommandPartial[] = [
     },
     {
         name: "refreshhosts",
-        description: "Force refresh /serverstatus hosts",
+        description: "Force refresh /serverstatus hosts"
     },
     {
         name: "download",
         description: "Download Deeeep.io Reef Client"
+    },
+    {
+        name: "accountinfo",
+        description: "Fetch Deeeep.io account info",
+        options: [
+            {
+                name: "account",
+                description: "Name of the account",
+                required: true,
+                type: SlashCommandOptionType.STRING
+            }
+        ]
     }
 ];
