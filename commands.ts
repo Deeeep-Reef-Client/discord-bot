@@ -27,6 +27,12 @@ export const commands: SlashCommandPartial[] = [
                 description: "Name of the account",
                 required: true,
                 type: SlashCommandOptionType.STRING
+            },
+            {
+                name: "type",
+                description: "How to search the account. True to search by username, False to search by ID",
+                required: false,
+                type: SlashCommandOptionType.BOOLEAN
             }
         ]
     }
